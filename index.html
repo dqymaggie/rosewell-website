@@ -7,18 +7,13 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="components/footer.css">
     <link rel="stylesheet" href="components/header.css">
-    <!-- /* Add this in the head section of your HTML for the social icons */ -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
     <script src="components/include.js"></script>
 </head>
 <body>
     <div id="header-placeholder"></div>
 
-    <!-- <nav>
-        <a href="/" class="logo">RoseWell</a>
-        <button class="sign-in">Sign In</button>
-    </nav> -->
     <main>
         <section class="hero">
             <h1>RoseWell Healthcare</h1>
@@ -56,51 +51,16 @@
         </section>
     </main>
 
-    <!-- <footer>
-        <div class="footer-content">
-            <div class="footer-left">
-                <div class="footer-logo">
-                    <a href="/">RoseWell</a>
-                </div>
-                <p class="footer-tagline">BUILT ON THE STRENGTH OF HEALTHCARE</p>
-            </div>
-
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <address>
-                    1111 Healthcare Drive<br>
-                    Suite 270<br>
-                    Corona Del Mar, CA 92625<br>
-                    <a href="tel:+18669383272">(866) 93-RWELL (83272)</a>
-                </address>
-                <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2025 RoseWell Healthcare, Inc</p>
-            <div class="footer-links">
-                <a href="/terms">Terms & Conditions</a>
-                <a href="/privacy">Privacy Policy</a>
-            </div>
-        </div>
-    </footer> -->
     <div id="footer-placeholder"></div>
 
-    <!-- Add the modal HTML before the closing body tag -->
+    <!-- Sign In Modal -->
     <div id="signInModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Sign In</h2>
                 <button class="close-button" onclick="closeModal()">&times;</button>
             </div>
-            
-            <h3>Welcome Back!</h3>
-            
+                        
             <form class="sign-in-form">
                 <div class="form-group">
                     <input type="email" id="signInEmail" placeholder="Email Address" required>
@@ -119,6 +79,55 @@
                 <div class="create-account">
                     <span>Need to </span>
                     <a href="#">Create an account?</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Create Account Modal -->
+    <div id="createAccountModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create Account</h2>
+                <button class="close-button" onclick="closeModal()">&times;</button>
+            </div>
+                    
+            <form class="create-account-form">
+                <div class="form-group">
+                    <input type="text" id="createFirstName" placeholder="First Name" required>
+                    <span class="error-message">First name is required</span>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" id="createLastName" placeholder="Last Name" required>
+                    <span class="error-message">Last name is required</span>
+                </div>
+                
+                <div class="form-group">
+                    <input type="email" id="createEmail" placeholder="Email Address" required>
+                    <span class="error-message">Email is required</span>
+                </div>
+
+                <div class="form-group">
+                    <input type="tel" id="createPhone" placeholder="Phone Number" required>
+                    <span class="error-message">Phone number is required</span>
+                </div>
+
+                <!-- <div class="form-group">
+                    <textarea id="createReason" placeholder="What brings you to RoseWell Healthcare? (Optional)" rows="4"></textarea>
+                </div> -->
+                
+                <div class="form-group password-group">
+                    <input type="password" id="createPassword" placeholder="Create Password" required>
+                    <button type="button" class="show-password">SHOW</button>
+                    <span class="error-message">Password is required</span>
+                </div>
+                
+                <button type="submit" class="sign-in-button">CREATE ACCOUNT</button>
+                
+                <div class="create-account">
+                    <span>Already have an account? </span>
+                    <a href="#" onclick="switchToSignIn()">Sign in</a>
                 </div>
             </form>
         </div>
