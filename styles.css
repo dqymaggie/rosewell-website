@@ -23,7 +23,7 @@ nav {
 
 .sign-in {
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #1b4d4d;
     color: white;
     border: none;
     border-radius: 5px;
@@ -51,7 +51,7 @@ nav {
 .book-now {
     padding: 15px 40px;
     font-size: 18px;
-    background-color: #4CAF50;
+    background-color: #1b4d4d;
     color: white;
     border: none;
     border-radius: 25px;
@@ -123,7 +123,7 @@ nav {
     align-self: flex-start;
     padding: 15px 40px;
     font-size: 18px;
-    background-color: #4CAF50;
+    background-color: #1b4d4d;
     color: white;
     border: none;
     border-radius: 25px;
@@ -311,4 +311,30 @@ nav {
     .sign-in-button {
         margin-top: auto;
     }
+}
+
+.modal .form-group {
+    margin-bottom: 20px;
+}
+
+.modal input[type="text"],
+.modal input[type="email"],
+.modal input[type="password"],
+.modal input[type="tel"],
+.modal textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+}
+
+.create-account-form textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+/* Add hover effect for the sign in link */
+.create-account a:hover {
+    text-decoration: underline;
 } 
