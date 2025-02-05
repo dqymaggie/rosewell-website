@@ -23,7 +23,7 @@ const firebaseApp = initializeApp({
   });
    
 const auth = getAuth(firebaseApp);
-connectAuthEmulator(auth, "http://localhost:9099");
+// connectAuthEmulator(auth, "http://localhost:9099");
 
 const db = getFirestore(firebaseApp);
 

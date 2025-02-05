@@ -29,7 +29,7 @@ const firebaseApp = initializeApp({
   });
    
 const auth = getAuth(firebaseApp);
-connectAuthEmulator(auth, "http://localhost:9099");
+// connectAuthEmulator(auth, "http://localhost:9099");
 
 // Login using email/password
 const loginEmailPassword = async () => {

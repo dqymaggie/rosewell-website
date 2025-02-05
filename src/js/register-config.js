@@ -34,7 +34,7 @@ const firebaseApp = initializeApp({
    
 const auth = getAuth(firebaseApp);
 // const db = getFirestore(firebaseApp);
-connectAuthEmulator(auth, "http://localhost:9099");
+// connectAuthEmulator(auth, "http://localhost:9099");
 
 // Create new account using email/password
 const createAccount = async () => {
