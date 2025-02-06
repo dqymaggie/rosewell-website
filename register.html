@@ -10,6 +10,14 @@
   <!-- <script type="module" src="../../dist/registercon.bundle.js"></script> -->
 <script defer src="/register.bundle.js"></script><script defer src="/registercon.bundle.js"></script></head>
 
+<style>
+  body {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+  }
+</style>
+
 <body>
   <div id="register">
     <div class="header">
@@ -57,6 +65,12 @@
         </div>
     </form>
   </div>
+
+  <script>
+    window.onload = function() {
+      document.body.style.display = 'block';  // 页面加载完毕后显示
+    };
+  </script>
 </body>
 
 <!-- Footer Component -->

@@ -6,6 +6,13 @@
     <title>Terms of Use</title>
     <script type="module" src="../../dist/terms.bundle.js"></script>
 <script defer src="/terms.bundle.js"></script></head>
+<style>
+    body {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+</style>
 <body>
     <div class="container">
         <h1>Privacy Policy</h1>
@@ -57,5 +64,11 @@
 
     <p>By using our website, you agree to the terms of this Privacy Policy.</p>
     </div>
+
+    <script>
+        window.onload = function() {
+          document.body.style.display = 'block';  // 页面加载完毕后显示
+        };
+      </script>
 </body>
 </html>

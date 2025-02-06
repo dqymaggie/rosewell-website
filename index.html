@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script type="module" src="../dist/main.bundle.js"></script>
 <script defer src="/main.bundle.js"></script></head>
+<style>
+    body {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+</style>
 <body>
     <header>
         <div class="header-wrapper">
@@ -65,6 +72,12 @@
             </form>
         </section>
     </main>
+
+    <script>
+        window.onload = function() {
+          document.body.style.display = 'block';  // 页面加载完毕后显示
+        };
+      </script>
 </body>
 <!-- Footer Component -->
 <div class="footer-wrapper">
