@@ -27,8 +27,8 @@
                     </div>
                     <button class="icon-button" onclick="window.location.href='/login.html'" aria-label="Sign In" id="user-icon">
                         <i class="fas fa-user"></i>
-                    </button>
-                    <!-- <button class="icon-button menu-toggle" aria-label="Menu">
+                    <!-- </button>
+                    <button class="icon-button menu-toggle" aria-label="Menu">
                         <i class="fas fa-bars"></i>
                     </button>
                     <div class="dropdown-menu" style="display: none;">
@@ -48,11 +48,11 @@
         </section>
 
         <!-- About Us Section -->
-        <section class="about-us">
+        <section class="about-us" id="about-us">
             <h2>About Us</h2>
             <div class="about-content">
                 <div class="about-image">
-                    <img src="/c0c26aba80d4e244c3c5.jpg" alt="Grow Better">
+                    <img src="/116c7c114883481b50f8.jpg" alt="Grow Better">
                 </div>
                 <div class="about-text">
                     <!-- <h2>Our Mission: Helping Millions of Organizations Grow Better</h2> -->
@@ -65,12 +65,12 @@
                     <p>Founded by professionals with years of experience in the healthcare industry, we aim to create a trusted space where patients feel understood and supported throughout their health journey. Our team is passionate about improving the lives of those we serve, offering personalized care to help you achieve your health goals.</p>
                 </div>
                 <div class="about-image">
-                    <img src="/6e19dc6ee1e5eb28881f.jpg" alt="Our Team">
+                    <img src="/c0c26aba80d4e244c3c5.jpg" alt="Our Team">
                 </div>
             </div>
         </section>
 
-        <section class="faq">
+        <section class="faq" id="faq">
             <h2>Frequently asked questions</h2>
             <div class="faq-item">
                 <button class="faq-question">
@@ -126,7 +126,7 @@
             <!-- Add more FAQ items as needed -->
         </section>
 
-        <section class="contact">
+        <section class="contact" id="contact">
             <h2>Contact Us</h2>
             <p class="contact-intro">Have a question or feedback? Fill out some info and we will be in touch shortly. We can't wait to hear from you!</p>
             
@@ -160,11 +160,9 @@
             </form>
         </section>
     </main>
-
     <script>
         window.onload = function() {
-            document.body.style.visibility = 'visible';
-            document.body.style.opacity = '1';
+          document.body.style.display = 'block';  // 页面加载完毕后显示
         };
       </script>
 </body>
