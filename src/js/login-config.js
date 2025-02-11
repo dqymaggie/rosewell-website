@@ -2,9 +2,6 @@ import '../css/login.css';
 import '../css/footer.css';
 
 import { 
-  hideLoginError, 
-  showLoginState, 
-  showLoginError, 
   btnLogin
 } from './login'
 
@@ -13,11 +10,10 @@ import {
   getAuth,
   onAuthStateChanged, 
   signInWithEmailAndPassword,
-  connectAuthEmulator,
   sendPasswordResetEmail
 } from 'firebase/auth';
 
-import { getFirestore} from "firebase/firestore";
+// import { getFirestore} from "firebase/firestore";
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyBobHXt_J2kNDxSHoLKKC8YP9Unuj7mCvA",
@@ -29,25 +25,18 @@ const firebaseApp = initializeApp({
   });
    
 const auth = getAuth(firebaseApp);
-// connectAuthEmulator(auth, "http://localhost:9099");
 
 // Login using email/password
 const loginEmailPassword = async () => {
   const loginEmail = txtEmail.value
   const loginPassword = txtPassword.value
-  console.log('tried logging in')
 
   // add error handling
   try {
     const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
-    console.log(userCredential)
-    console.log('logged in')
-
-    // Redirect to dashboard after successful login
     window.location.href = 'dashboard.html';
   }
   catch(error) {
-    console.log(error);
     const lblLoginErrorMessage = document.getElementById('lblLoginErrorMessage');
     lblLoginErrorMessage.style.display = 'block';
     
@@ -57,7 +46,6 @@ const loginEmailPassword = async () => {
       'auth/user-disabled': 'This account has been disabled. Please contact support.',
       'auth/user-not-found': 'No account found with this email. Please sign up.',
       'auth/wrong-password': 'Incorrect password. Please try again.',
-      // Add more error codes and messages as needed
     };
 
     // Display the user-friendly message or a default message
@@ -65,27 +53,8 @@ const loginEmailPassword = async () => {
   }
 }
 
-// Monitor auth state
-const monitorAuthState = async () => {
-  onAuthStateChanged(auth, user => {
-    if (user) {
-      console.log(user)
-      showLoginState(user)
-
-      // hideLoginError()
-      // hideLinkError()
-    }
-    else {
-      console.log('no user')
-    //   showLoginForm()
-      lblAuthState.innerHTML = `You're not logged in.`
-    }
-  })
-}
-
 // Send Password Reset Email
 const resetPassword = async () => {
-  console.log('resetting password')
   const email = txtEmail.value
   const forgotPasswordError = document.getElementById('forgot-password-error');
   try {
@@ -93,10 +62,9 @@ const resetPassword = async () => {
     forgotPasswordError.style.display = 'block';
     forgotPasswordError.style.color = 'green';
     forgotPasswordError.innerHTML = 'Password reset email sent!';
-
   }
   catch(error) {
-    console.log(error)
+    // console.log(error)
     forgotPasswordError.style.display = 'block';
     const errorMessages = {
       'auth/invalid-email': 'Invalid email address. Please check and try again.',
@@ -114,8 +82,3 @@ btnLogin.addEventListener("click", loginEmailPassword)
 
 const forgotPasswordLink = document.getElementById('forgot-password');
 forgotPasswordLink.addEventListener('click', resetPassword);
-
-
-monitorAuthState();
-
-console.log("login-config.js loaded");

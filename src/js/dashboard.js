@@ -1,5 +1,6 @@
 import '../css/dashboard.css';
-
+import '../css/header.css';
+import '../css/footer.css';
 import { initializeApp } from 'firebase/app';
 import { 
   getAuth,
@@ -8,10 +9,10 @@ import {
   updateEmail,
   updatePassword,
   signOut,
-  connectAuthEmulator
+  sendEmailVerification,
+  // connectAuthEmulator
 } from 'firebase/auth';
 
-import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyBobHXt_J2kNDxSHoLKKC8YP9Unuj7mCvA",
@@ -21,43 +22,73 @@ const firebaseApp = initializeApp({
     messagingSenderId: "37800874810",
     appId: "1:37800874810:web:0ffdb95d077b0f546eb603"
   });
-   
 const auth = getAuth(firebaseApp);
-// connectAuthEmulator(auth, "http://localhost:9099");
-
-const db = getFirestore(firebaseApp);
-
-// Monitor auth state
-const lblAuthState = document.querySelector('#lblAuthState')
-const showLoginState = (user) => {
-    lblAuthState.innerHTML = `You're logged in as ${user.displayName} (uid: ${user.uid}, email: ${user.email}) `
-  }
 
 const userWelcome = document.querySelector('#user-welcome')
 const userName = document.querySelector('#user-name')
 const userEmail = document.querySelector('#user-email')
-const userPassword = document.querySelector('#user-password')
 
 const monitorAuthState = async () => {
     onAuthStateChanged(auth, user => {
       if (user) {
-        console.log(user)
-        showLoginState(user)
+        userWelcome.textContent = `Welcome, ${user.displayName}!`;
+        userName.textContent = `${user.displayName}`;
+        userEmail.textContent = `${user.email} `;
+        updateVerificationStatus(user);
 
-        userWelcome.innerHTML = `Welcome, ${user.displayName}!`;
-        userName.innerHTML = `${user.displayName}`;
-        userEmail.innerHTML = `${user.email} `;
+        // check contact form input
+        document.getElementById("contact-form").addEventListener("submit", (event) => {
+          event.preventDefault(); 
+          // console.log('submit')
+
+          const firstNameInput = document.getElementById("contact-firstName");
+          const lastNameInput = document.getElementById("contact-lastName");
+          const emailInput = document.getElementById("contact-email");
+
+          const nameParts = user.displayName ? user.displayName.split(" ") : ["", ""];
+
+          if (!firstNameInput.value) firstNameInput.value = nameParts[0] || "";
+          if (!lastNameInput.value) lastNameInput.value = nameParts.slice(1).join(" ") || "";
+          if (!emailInput.value) emailInput.value = user.email || "";
+
+          event.target.submit(); 
+      });
+        
+        // console.log(user)
+        // showLoginState(user)
         // userPassword.innerHTML = `You're logged in as ${user.displayName} (uid: ${user.uid}, email: ${user.email}) `;
-  
         // hideLoginError()
         // hideLinkError()
       }
       else {
-        console.log('no user')
+        // console.log('no user')
       //   showLoginForm()
-        lblAuthState.innerHTML = `You're not logged in.`
+        // lblAuthState.innerHTML = `You're not logged in.`
       }
-    })
+    });
+
+    // send verification email
+    const verifyStatus = document.querySelector(".verify-status");
+    async function sendVerificationEmail(user) {
+        try {
+            await sendEmailVerification(user);
+            alert("Verification email sent to " + user.email);
+        } catch (error) {
+            alert("Error sending verification email: " + error.message);
+        }
+    }
+
+    // update email verification status
+    function updateVerificationStatus(user) {
+        if (user.emailVerified) {
+            verifyStatus.innerHTML = '<span style="color: green; font-weight: bold; padding-left: 5px;">Verified</span>';
+        } else {
+            verifyStatus.innerHTML = '<button class="verify-link" style="background-color:rgb(159, 27, 27); color: #fff; border: none; padding: 5px 10px; border-radius: 5px; width:auto;">Verify</button>';
+            document.querySelector(".verify-link").addEventListener("click", function () {
+                sendVerificationEmail(user);
+            });
+        }
+      }
 }
 
 // Log out
@@ -69,11 +100,10 @@ const logout = async () => {
 
 const btnLogout = document.querySelector('#btnLogout')
 btnLogout.addEventListener("click", logout)
-
-console.log('dashboard.js loaded')
-
 monitorAuthState();  
 
+
+// Edit Profile Functionality
 document.addEventListener('DOMContentLoaded', () => {
     const editLinks = document.querySelectorAll('.edit-link');
     const saveLinks = document.querySelectorAll('.save-link');
@@ -108,10 +138,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const editLink = infoGroup.querySelector('.edit-link');
       const saveLink = infoGroup.querySelector('.save-link');
       const cancelLink = infoGroup.querySelector('.cancel-link');
+
+      if (isEditing) {
+        displayElements.forEach((el, i) => {
+            if (inputElements[i]) {
+                inputElements[i].value = (index === 2) ? '' : el.textContent.trim(); // Keep password input empty for security
+            }
+        });
+        editLink.style.visibility = 'hidden';
+      } else {
+          editLink.style.visibility = 'visible';
+      }
   
       displayElements.forEach(el => el.style.display = isEditing ? 'none' : 'inline');
-      inputElements.forEach(el => el.style.display = isEditing ? 'inline' : 'none');
-      editLink.style.display = isEditing ? 'none' : 'inline';
+      inputElements.forEach(el => el.style.display = isEditing ? 'inline' : 'none');      
       saveLink.style.display = isEditing ? 'inline' : 'none';
       cancelLink.style.display = isEditing ? 'inline' : 'none';
     }
@@ -129,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
-      console.log(index)
       if (index === 0) {
         updateProfile(auth.currentUser, {
           displayName: inputElements[0].value

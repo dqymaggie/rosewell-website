@@ -13,14 +13,12 @@ import {
 import { initializeApp } from 'firebase/app';
 import { 
   getAuth,
-  onAuthStateChanged, 
   createUserWithEmailAndPassword,
   updateProfile,
+  // onAuthStateChanged, 
   // sendEmailVerification,
-  connectAuthEmulator
+  // connectAuthEmulator
 } from 'firebase/auth';
-
-import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 
 const firebaseApp = initializeApp({
@@ -33,8 +31,6 @@ const firebaseApp = initializeApp({
   });
    
 const auth = getAuth(firebaseApp);
-// const db = getFirestore(firebaseApp);
-// connectAuthEmulator(auth, "http://localhost:9099");
 
 // Create new account using email/password
 const createAccount = async () => {
@@ -44,6 +40,7 @@ const createAccount = async () => {
   const lastName = registerLastName.value;
   const lblLoginErrorMessage = document.getElementById('lblLoginErrorMessage');
   
+  // Check if first and last name are filled in
   if (firstName === '' || lastName === '') {
     lblLoginErrorMessage.style.display = 'block';
     lblLoginErrorMessage.innerHTML = 'Please fill in first and last name.';
@@ -51,6 +48,7 @@ const createAccount = async () => {
     return;
   }
 
+  // Check if first and last name contain only English letters
   const namePattern = /^[A-Za-z]+$/;
   if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
     lblLoginErrorMessage.style.display = 'block';
@@ -58,7 +56,7 @@ const createAccount = async () => {
     return;
   }
 
-  // Check for valid password
+  // Check for valid password on Firebase
   const passwordError = document.getElementById('password-error');
   const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
   if (!passwordPattern.test(password)) {
@@ -67,7 +65,7 @@ const createAccount = async () => {
   } else {
     passwordError.style.display = 'none';
       // Proceed with form submission or further processing
-      console.log('Password is valid!');
+      // console.log('Password is valid!');
       // alert('Password is valid!');
   }
 
@@ -79,26 +77,13 @@ const createAccount = async () => {
     await updateProfile(user, {
       displayName: `${firstName} ${lastName}`
     });
+    // console.log('Account created and user data stored successfully');
 
-    // await setDoc(doc(db, "users", user.uid), {
-    //   firstName: firstName,
-    //   lastName: lastName,
-    //   email: email,
-    //   createdAt: new Date()
-    // });
-
-    // await sendEmailVerification(user, {
-    //   url: 'https://rosewell-website.web.app/dashboard.html'
-    // });
-
-    console.log('Account created and user data stored successfully');
-
-    // Redirect to dashboard after successful login
     window.location.href = 'dashboard.html';
   }
   catch(error) {
-    console.log(`There was an error: ${error}`);
-    console.log(error);
+    // console.log(`There was an error: ${error}`);
+    // console.log(error);
     const lblLoginErrorMessage = document.getElementById('lblLoginErrorMessage');
     lblLoginErrorMessage.style.display = 'block';
     
@@ -110,7 +95,6 @@ const createAccount = async () => {
       'auth/user-disabled': 'This account has been disabled. Please contact support.',
       'auth/user-not-found': 'No account found with this email. Please sign up.',
       'auth/wrong-password': 'Incorrect password. Please try again.',
-      // Add more error codes and messages as needed
     };
 
     // Display the user-friendly message or a default message
@@ -118,21 +102,4 @@ const createAccount = async () => {
   } 
 }
 
-// Monitor auth state
-const monitorAuthState = async () => {
-  onAuthStateChanged(auth, user => {
-    if (user) {
-      console.log(user)
-      showLoginState(user)
-
-      hideRegisterError()
-    }
-    else {
-      // lblAuthState.innerHTML = `You're not logged in.`
-    }
-  })
-}
-
 btnRegister.addEventListener("click", createAccount)
-
-monitorAuthState();

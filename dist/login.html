@@ -6,10 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Secure Sign In</title>
-  <script type="module" src="../../dist/login.bundle.js"></script>
-  <script type="module" src="../../dist/logincon.bundle.js"></script>
 <script defer src="/login.bundle.js"></script><script defer src="/logincon.bundle.js"></script></head>
-
+<style>
+  body {
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+  }
+</style>
 <body>
   <div id="login">
     <div class="header">
@@ -36,12 +40,12 @@
         <div id="lblLoginErrorMessage" class="errorlabel"></div>
       </div> -->
       <p id="lblLoginErrorMessage" class="errorlabel">Error message</p>
-      <div class="group">
+      <!-- <div class="group">
         <div id="lblAuthState" class="authlabel"></div>
-      </div>
+      </div> -->
       <button id="btnLogin" type="button" class="button buttonBlue">Sign in</button>
-      <button id="btnRegister" type="button" class="button buttonOutline">
-        <a onclick="window.location.href='/register.html'"  style="text-decoration: none; color: inherit;">Register now</a>
+      <button id="btnRegister" type="button" class="button buttonOutline" onclick="window.location.href='/register.html'">
+        <a style="text-decoration: none; color: inherit;">Register now</a>
     </button>
       <div class="links">
         <p><a href="#" style="text-decoration: underline" id="forgot-password">Forgot password?</a></p>
@@ -49,6 +53,12 @@
       </div>
     </form>
   </div>
+  <script>
+    window.onload = function() {
+      document.body.style.visibility = 'visible';
+      document.body.style.opacity = '1';
+    };
+  </script>
 </body>
 
 <!-- Footer Component -->

@@ -18,7 +18,7 @@ module.exports = {
     filename: '[name].bundle.js',  // 让不同 entry 生成独立的 JS 文件
     publicPath: '/'
   },
-  watch: true,
+  watch: false,
   module: {
     rules: [
       {
@@ -35,14 +35,14 @@ module.exports = {
       },
       {
         test: /\.html$/,
-        exclude: /index\.html$|dashboard\.html$|login\.html$|register\.html$|terms\.html$|privacy\.html$/,
-        type: 'asset/source',
-        use:{
-            loader: 'html-loader'
+        exclude: /node_modules/,
+        use: {
+          loader: 'html-loader'
         }
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        exclude: /node_modules/,
         type: 'asset/resource'
       }
     ]
