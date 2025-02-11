@@ -1,1 +1,0 @@
-# rosewell-website
