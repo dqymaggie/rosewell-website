@@ -46,18 +46,3 @@ document.querySelectorAll('.faq-question').forEach(button => {
         icon.classList.toggle('fa-chevron-up');
     });
 });
-
-
-// Navigation Links
-const navLinks = document.querySelectorAll('.nav-link');
-
-navLinks.forEach(link => {
-    link.addEventListener('click', (event) => {
-        event.preventDefault(); // Prevent default anchor behavior
-        const targetId = link.getAttribute('href'); // Get the target section ID
-        const targetSection = document.querySelector(targetId); // Find the target section
-
-        // Scroll to the target section smoothly
-        targetSection.scrollIntoView({ behavior: 'smooth' });
-    });
-});
