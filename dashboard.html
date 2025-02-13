@@ -19,11 +19,11 @@
             <nav class="nav-header">
                 <a href="/" class="logo">RoseWell</a>
                 <div class="nav-icons">
-                    <!-- New Navigation Links -->
+                    <!-- Navigation Links -->
                     <div class="nav-links">
                         <a href="../index.html#about-us" class="nav-link">About Us</a>
                         <a href="../index.html#faq" class="nav-link">FAQ</a>
-                        <a href="../index.html#contact" class="nav-link">Contact</a>
+                        <a href="#contact-form" class="nav-link">Contact</a>
                     </div>
                     <button class="icon-button" aria-label="Sign In">
                         <i class="fas fa-user"></i>
@@ -40,15 +40,6 @@
         <div class="profile-details">
             <h1 id="user-welcome">Welcome, user!</h1>
         </div>
-
-        <!-- <div class="info-section">
-            <button id="btnBook" type="button" class="button buttonBlue" onclick="window.location.href='https://www.tebra.com'">
-                <i class="fa-regular fa-calendar-check"  style="font-size: 30px;"></i>
-                Schedule an Appointment</button>
-            <button id="btnLogout" type="button" class="button buttonBlue">
-                <i class="fa-solid fa-arrow-right-from-bracket" style="font-size: 30px;"></i>
-                Log out</button>
-        </div> -->
 
         <div class="button-grid">
             <button id="btnSchedule" type="button" class="tile-button" onclick="window.location.href='https://www.tebra.com'">
@@ -78,7 +69,7 @@
             <div class="info-group">
                 <span class="display-name" id="user-name">user name</span>
                 <a href="#" class="edit-link">Edit</a>
-                <input type="text" class="edit-name" style="display: none; max-width: 95%;  border: 1px solid #ccc; margin-left: 20px;">
+                <input type="text" class="edit-name" style="display: none; max-width: 95%; border: 1px solid #ccc; margin-left: 20px;">
                 <button class="cancel-link" style="display: none;">Cancel</button>
                 <button class="save-link" style="display: none;">Save</button>
             </div>
@@ -87,7 +78,7 @@
             <h3>Email</h3>
             <div class="info-group">
                 <span class="display-email" id="user-email">user@email.com</span>
-                    <input type="email" class="edit-email" style="display: none; max-width: 95%;  border: 1px solid #ccc; margin-left: 20px;">
+                    <input type="email" class="edit-email" style="display: none; max-width: 95%; border: 1px solid #ccc; margin-left: 20px;">
                     <a href="#" class="edit-link">Edit</a>
                 <button class="cancel-link" style="display: none;">Cancel</button>
                 <button class="save-link" style="display: none;">Save</button>
@@ -100,16 +91,26 @@
             <div class="info-group">
                 <p class="password-dots">
                     <span class="display-password" id="user-password">••••••••••</span>
-                    <input type="password" class="edit-password" style="display: none;max-width: 95%;  border: 1px solid #ccc; margin-left: 20px;">
+                    <input type="password" class="edit-password" style="display: none; max-width: 95%; border: 1px solid #ccc; margin-left: 20px;">
                 </p>
                 <a href="#" class="edit-link">Edit</a>
                 <button class="cancel-link" style="display: none;">Cancel</button>
                 <button class="save-link" style="display: none;">Save</button>
             </div>
         </div>
-</div>
+    </div>
     
-    <!-- contact Form -->
+    <!-- Modal for editing -->
+    <div id="editModal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Edit <span id="fieldName"></span></h3>
+            <input type="text" id="editInput" />
+            <button id="saveButton">Save</button>
+        </div>
+    </div>
+
+    <!-- Dashboard Contact Form -->
     <div class="contact" style="margin-top: 20px;" id="contact-form">
         <!-- <section class="contact"> -->
             <h2>Appointment & Support</h2>
@@ -144,23 +145,14 @@
             </form>
         <!-- </section> -->
     </div>
+     
 
-    <!-- Modal for editing -->
-    <div id="editModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Edit <span id="fieldName"></span></h3>
-            <input type="text" id="editInput" />
-            <button id="saveButton">Save</button>
-        </div>
-    </div>
     <script>
         window.onload = function() {
             document.body.style.visibility = 'visible';
             document.body.style.opacity = '1';
         };
-      </script>
-
+    </script>
 </body>
 <!-- Footer Component -->
 <div class="footer-wrapper">
