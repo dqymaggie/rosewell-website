@@ -5,12 +5,6 @@
     font-family: Arial, sans-serif;
 }
 
-body {
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-
 .sign-in {
     padding: 10px 20px;
     background-color: #1b4d4d;

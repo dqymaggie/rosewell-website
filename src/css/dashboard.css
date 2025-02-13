@@ -8,10 +8,6 @@
 body {
     background-color: #f5f5f5;
     padding-top: 80px; /* Adjust this value based on your header height */
-
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
 }
 
 .dashboard-container {
@@ -414,6 +410,13 @@ button {
 
     .nav-links {
         display: none;
+    }
+
+    .cancel-link {
+        background-color: #f0f0f0;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+        margin-left: 30px;
     }
 } 
 
