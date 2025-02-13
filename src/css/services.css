@@ -91,7 +91,7 @@ h2 {
 p {
     font-size: 16px;
     line-height: 1.6;
-    margin: 10px 0 10px 0;
+    margin: 30px 0 10px 0;
 }
 
 .service-icon {
@@ -142,8 +142,8 @@ a {
 
     .hero-box{
         background-color: azure;
-        height: 15vh;
         width: 80%;
+        height: auto;
     }
 
     .hero h1 {
