@@ -19,18 +19,25 @@
             <nav class="nav-header">
                 <a href="/" class="logo">RoseWell</a>
                 <div class="nav-icons">
-                    <!-- Navigation Links -->
                     <div class="nav-links">
-                        <a href="../index.html#about-us" class="nav-link">About Us</a>
-                        <a href="../index.html#faq" class="nav-link">FAQ</a>
-                        <a href="#contact-form" class="nav-link">Contact</a>
+                        <div class="dropdown">
+                            <a href="/" class="nav-link">Home</a>
+                            <div class="dropdown-content">
+                                <a href="#about-us">About Us</a>
+                                <a href="#faq">FAQ</a>
+                                <a href="#contact">Contact</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a href="services.html" class="nav-link">Services</a>
+                            <div class="dropdown-content">
+                                <a href="/services.html#primaryCareDescription">Primary Care</a>
+                                <a href="/services.html#mentalHealthDescription">Mental Health</a>
+                            </div>
+                        </div>
                     </div>
-                    <button class="icon-button" aria-label="Sign In">
+                    <button class="icon-button" onclick="window.location.href='/login.html'" aria-label="Sign In" id="user-icon">
                         <i class="fas fa-user"></i>
-                    </button>
-                    <!-- <button class="icon-button menu-toggle" aria-label="Menu">
-                        <i class="fas fa-bars"></i>
-                    </button> -->
                 </div>
             </nav>
         </div> 
