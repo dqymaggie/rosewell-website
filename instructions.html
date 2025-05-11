@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoseWell Healthcare - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script defer src="/instructions.bundle.js"></script></head>
+<style>
+    body {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+</style>
+<body>
+    <header>
+        <div class="header-wrapper">
+            <nav class="nav-header">
+                <a href="/" class="logo">RoseWell</a>
+                <div class="nav-icons">
+                    <div class="nav-links">
+                        <div class="dropdown">
+                            <a href="/" class="nav-link">Home</a>
+                            <div class="dropdown-content">
+                                <a href="#about-us">About Us</a>
+                                <a href="#faq">FAQ</a>
+                                <a href="#contact">Contact</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a href="services.html" class="nav-link">Services</a>
+                            <div class="dropdown-content">
+                                <a href="/services.html#primaryCareDescription">Primary Care</a>
+                                <a href="/services.html#mentalHealthDescription">Mental Health</a>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="icon-button" onclick="window.location.href='/login.html'" aria-label="Sign In" id="user-icon">
+                        <i class="fas fa-user"></i>
+                </div>
+            </nav>
+        </div> 
+    </header>
+    
+    <!-- Book Your Visit -->
+    <div class="title">
+        <h1>Book Your Virtual New-Patient Visit</h1>
+    </div>
+  
+    <p>Follow these quick steps. Need help? <a href="mailto:contact@rosewellhc.com">Email us</a> or text <a href="tel:8044208575">804-420-8575</a>.</p>
+
+    <div class="instructions-container">
+        <div class="step">
+            <div class="step-number">1</div>
+            <div class="step-content">
+                <img src="/6e6094b4b3be3c897abb.png" alt="Step 1: New patient selection">
+                <div class="step-text">Check <em>"I'm a new patient at this practice"</em> and choose <em>"New Patient Appointment."</em></div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">2</div>
+            <div class="step-content">
+                <img src="/245341c1d38376bcf45f.png" alt="Step 2: Virtual visit selection">
+                <div class="step-text">Select <strong>"Virtual Visit."</strong></div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">3</div>
+            <div class="step-content">
+                <img src="/55226e77d7ff32b0f5c7.png" alt="Step 3: Date and time selection">
+                <div class="step-text">Pick the date and time that works for you (times are shown in <strong>Eastern Time</strong>).</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">4</div>
+            <div class="step-content">
+                <img src="/beb9eb99a55ac1e983a1.png" alt="Step 4: Contact and insurance details">
+                <div class="step-text">Enter your contact, insurance, and payment details. Have your ID and insurance card ready to upload.</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-number">5</div>
+            <div class="step-content">
+                <img src="/5ad43672a047da25724f.png" alt="Step 5: Email confirmation">
+                <div class="step-text">Watch for an email confirmation. It contains the video-visit link and your intake form—please complete it <strong>at least 24 hours before</strong> the appointment.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Before Your Visit -->
+    <div class="before-visit-container">
+        <h2>Before Your Visit</h2>
+        <div class="visit-steps">
+            <div class="visit-step">
+                <div class="visit-icon">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="visit-text">
+                    Test your camera, microphone, and internet connection <a href="https://patient.kareo.com/device-test" target="_blank" rel="noopener">here</a>.
+                </div>
+            </div>
+
+            <div class="visit-step">
+                <div class="visit-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="visit-text">
+                    Reschedule or cancel with the link in your email at least 24 hours ahead to avoid fees.
+                </div>
+            </div>
+
+            <div class="visit-step">
+                <div class="visit-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="visit-text">
+                    All data is encrypted & HIPAA-compliant via Tebra.
+                </div>
+            </div>
+        </div>
+
+        <div class="book-now-container">
+            <p>Thank you for choosing RoseWell Healthcare. Ready?</p>
+            <a href="#" class="book-now-button">Book Now</a>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = '1';
+        };
+    </script>
+</body>
+
+<!-- Footer Component -->
+<div class="footer-wrapper">
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div class="footer-logo">
+                    <a href="/">RoseWell</a>
+                </div>
+                <p class="footer-tagline">BUILT ON THE STRENGTH OF HEALTHCARE</p>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <address>
+                    <!-- 1234 Healthcare Drive<br>
+                    Suite 123<br>
+                    Corona Del Mar, CA 1234<br> -->
+                    <a href="tel:8044208575">Phone: 804-420-8575</a><br>
+                    <a>Fax: 804-373-5119</a><br>
+                    <a href="mailto:contact@rosewellhc.com">contact@rosewellhc.com</a>
+                </address>
+                <!-- <div class="social-links">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 RoseWell Healthcare, Inc</p>
+            <div class="footer-links">
+                <a href="/terms.html" style="text-decoration: underline;">Terms & Conditions</a>
+                <a href="/privacy.html" style="text-decoration: underline;">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+</div> 
+</html> 
