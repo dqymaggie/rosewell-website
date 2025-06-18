@@ -1,8 +1,137 @@
+body {
+    padding-top: 145px;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
+}
+
+.hero-banner {
+    position: relative;
+    background-image: url('../img/leuchtturm-entertainment-U2H4Br0_NLs-unsplash.jpg');
+    background-size: cover;
+    background-position: 90% center;
+    height: 40vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    background-color: linea;
+  }
+  
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+    display: flex;
+    align-items: center;
+  }
+  
+  .banner-content {
+    max-width: 600px;
+    padding: 0 50px;
+  }
+  
+  .banner-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .banner-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .banner-buttons .btn {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-right: 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+  
+  .btn.primary {
+    background-color: #a78bfa;
+    color: white;
+  }
+  
+  .btn.secondary {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+  }
+
+  @media (min-width: 1200px) {
+    .banner-content {
+        padding-left: 15%;
+        max-width: 50%;
+    }
+}
+@media (max-width: 480px) {
+    .banner-content h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+    .banner-content p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .banner-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .banner-buttons .btn {
+        display: inline-block;
+        padding: 6px 10px;
+    }
+}
+
+
 .instructions-container {
     max-width: 800px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
+
+.insurance-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: left;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333;
+  }
+  
+  .insurance-section ul {
+    padding-left: 25%;
+    list-style-type: disc;
+    margin: 10px 0 0;
+  }
+  
+  .insurance-section li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .insurance-section p {
+    padding: 50px;
+    text-align: center;
+  }
+
+
+
 
 .step {
     display: flex;
@@ -59,16 +188,10 @@
 
 
 /* Instructions */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background-color: #f9f9f9;
-}
+
 
 h1 {
-    color: #003366;
+    /* color: #003366; */
     font-size: 2em;
     margin-bottom: 10px;
 }
@@ -157,6 +280,16 @@ h1 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .insurance-section ul {
+        padding-left: 20%;
+        margin: 0 0;
+      }
+
+      .insurance-section p {
+        padding: 2rem;
+        text-align: center;
+      }
+
     .step {
         flex-direction: column;
         align-items: center;
@@ -188,16 +321,17 @@ h1 {
     }
 }
 
-.before-visit-container {
+.section-container {
     max-width: 800px;
-    margin: 3rem auto;
+    margin: 5rem auto;
     padding: 0 1rem;
 }
 
-.before-visit-container h2 {
+.section-container h2 {
     color: #003366;
     text-align: center;
     margin-bottom: 2rem;
+    font-size: 2rem;
 }
 
 .visit-steps {
@@ -252,6 +386,10 @@ h1 {
     font-weight: bold;
     margin-top: 1rem;
     transition: background-color 0.3s ease;
+}
+
+.book-now-button i {
+    margin-left: 10px;
 }
 
 .book-now-button:hover {

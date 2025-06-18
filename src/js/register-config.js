@@ -17,9 +17,10 @@ import {
   updateProfile,
   // onAuthStateChanged, 
   // sendEmailVerification,
-  // connectAuthEmulator
+  connectAuthEmulator
 } from 'firebase/auth';
 
+// import { getFirestore, doc, setDoc } from "firebase/firestore";
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyBobHXt_J2kNDxSHoLKKC8YP9Unuj7mCvA",
@@ -31,6 +32,27 @@ const firebaseApp = initializeApp({
   });
    
 const auth = getAuth(firebaseApp);
+
+// ------------------------------------------------------------------------------------------
+connectAuthEmulator(auth, "http://localhost:9099");
+
+// // Monitor auth state
+// const monitorAuthState = async () => {
+//   onAuthStateChanged(auth, user => {
+//     if (user) {
+//       console.log(user)
+//       showLoginState(user)
+//       hideRegisterError()
+//     }
+//     else {
+//       // lblAuthState.innerHTML = `You're not logged in.`
+//     }
+//   })
+// }
+
+// monitorAuthState();
+// // ------------------------------------------------------------------------------------------
+
 
 // Create new account using email/password
 const createAccount = async () => {
@@ -48,7 +70,7 @@ const createAccount = async () => {
     return;
   }
 
-  // Check if first and last name contain only English letters
+  // Check if names contain only English letters
   const namePattern = /^[A-Za-z]+$/;
   if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
     lblLoginErrorMessage.style.display = 'block';
@@ -56,7 +78,7 @@ const createAccount = async () => {
     return;
   }
 
-  // Check for valid password on Firebase
+  // Check for valid password
   const passwordError = document.getElementById('password-error');
   const passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
   if (!passwordPattern.test(password)) {
@@ -69,7 +91,7 @@ const createAccount = async () => {
       // alert('Password is valid!');
   }
 
-  // create user account
+  // create user account on Firebase
   try {
     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
@@ -77,7 +99,7 @@ const createAccount = async () => {
     await updateProfile(user, {
       displayName: `${firstName} ${lastName}`
     });
-    // console.log('Account created and user data stored successfully');
+    console.log('Account created and user data stored successfully');
 
     window.location.href = 'dashboard.html';
   }
@@ -101,5 +123,41 @@ const createAccount = async () => {
     lblLoginErrorMessage.innerHTML = errorMessages[error.code] || 'An unexpected error occurred. Please try again.';
   } 
 }
+
+// import { validateName, validateEmail, validatePassword } from './validation.js';
+
+// const createAccount = async () => {
+//   const email = registerEmail.value;
+//   const password = registerPassword.value;
+//   const firstName = registerFirstName.value;
+//   const lastName = registerLastName.value;
+
+//   const nameErrors = validateName(firstName, lastName);
+//   const emailErrors = validateEmail(email);
+//   const passwordErrors = validatePassword(password);
+
+//   document.getElementById('nameErrorMessage').innerText = nameErrors.name || '';
+//   document.getElementById('emailErrorMessage').innerText = emailErrors.email || '';
+//   document.getElementById('passwordErrorMessage').innerText = passwordErrors.password || '';
+
+//   if (Object.keys(nameErrors).length || Object.keys(emailErrors).length || Object.keys(passwordErrors).length) {
+//     return;
+//   }
+
+//   try {
+//     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+//     const user = userCredential.user;
+
+//     await updateProfile(user, { displayName: `${firstName} ${lastName}` });
+//     console.log('Account created successfully');
+
+//     window.location.href = 'dashboard.html';
+//   } catch (error) {
+//     document.getElementById('lblLoginErrorMessage').innerText = 'An unexpected error occurred. Please try again.';
+//   }
+// };
+
+// btnRegister.addEventListener("click", createAccount);
+
 
 btnRegister.addEventListener("click", createAccount)

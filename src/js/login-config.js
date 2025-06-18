@@ -1,8 +1,10 @@
 import '../css/login.css';
 import '../css/footer.css';
-
 import { 
   btnLogin
+  // hideLoginError, 
+  // showLoginState, 
+  // showLoginError, 
 } from './login'
 
 import { initializeApp } from 'firebase/app';
@@ -10,10 +12,10 @@ import {
   getAuth,
   onAuthStateChanged, 
   signInWithEmailAndPassword,
-  sendPasswordResetEmail
+  sendPasswordResetEmail,
+  connectAuthEmulator
 } from 'firebase/auth';
 
-// import { getFirestore} from "firebase/firestore";
 
 const firebaseApp = initializeApp({
     apiKey: "AIzaSyBobHXt_J2kNDxSHoLKKC8YP9Unuj7mCvA",
@@ -25,18 +27,24 @@ const firebaseApp = initializeApp({
   });
    
 const auth = getAuth(firebaseApp);
+connectAuthEmulator(auth, "http://localhost:9099");
 
 // Login using email/password
 const loginEmailPassword = async () => {
   const loginEmail = txtEmail.value
   const loginPassword = txtPassword.value
+  // console.log('tried logging in')
 
   // add error handling
   try {
     const userCredential = await signInWithEmailAndPassword(auth, loginEmail, loginPassword)
+    // console.log(userCredential)
+    // console.log('logged in')
+
     window.location.href = 'dashboard.html';
   }
   catch(error) {
+    // console.log(error);
     const lblLoginErrorMessage = document.getElementById('lblLoginErrorMessage');
     lblLoginErrorMessage.style.display = 'block';
     
@@ -55,6 +63,7 @@ const loginEmailPassword = async () => {
 
 // Send Password Reset Email
 const resetPassword = async () => {
+  // console.log('resetting password')
   const email = txtEmail.value
   const forgotPasswordError = document.getElementById('forgot-password-error');
   try {
@@ -82,3 +91,26 @@ btnLogin.addEventListener("click", loginEmailPassword)
 
 const forgotPasswordLink = document.getElementById('forgot-password');
 forgotPasswordLink.addEventListener('click', resetPassword);
+
+
+// Monitor auth state
+const monitorAuthState = async () => {
+  onAuthStateChanged(auth, user => {
+    if (user) {
+      console.log(user)
+      showLoginState(user)
+
+      // hideLoginError()
+      // hideLinkError()
+    }
+    else {
+      console.log('no user')
+    //   showLoginForm()
+      lblAuthState.innerHTML = `You're not logged in.`
+    }
+  })
+}
+
+monitorAuthState();
+
+console.log("login-config.js loaded");

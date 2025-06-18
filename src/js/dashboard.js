@@ -1,6 +1,8 @@
 import '../css/dashboard.css';
 import '../css/header.css';
 import '../css/footer.css';
+
+import {validateName } from './validation.js'
 import { initializeApp } from 'firebase/app';
 import { 
   getAuth,
@@ -10,7 +12,7 @@ import {
   updatePassword,
   signOut,
   sendEmailVerification,
-  // connectAuthEmulator
+  connectAuthEmulator
 } from 'firebase/auth';
 
 
@@ -23,6 +25,15 @@ const firebaseApp = initializeApp({
     appId: "1:37800874810:web:0ffdb95d077b0f546eb603"
   });
 const auth = getAuth(firebaseApp);
+
+connectAuthEmulator(auth, "http://localhost:9099");
+// Monitor auth state
+// const lblAuthState = document.querySelector('#lblAuthState')
+// const showLoginState = (user) => {
+//     lblAuthState.innerHTML = `You're logged in as ${user.displayName} (uid: ${user.uid}, email: ${user.email}) `
+//   }
+// console.log('dashboard.js loaded')
+
 
 const userWelcome = document.querySelector('#user-welcome')
 const userName = document.querySelector('#user-name')
@@ -121,8 +132,39 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         saveChanges(index);
         toggleEditMode(index, false);
+        // if (validateInput(index, errorMessage)) {
+        //   saveChanges(index);
+        //   toggleEditMode(infoGroup, false);
+        // }
       });
     });
+
+    function validateInput(index, errorMessage) {
+      const inputElements = infoGroup.querySelectorAll('input');
+      const value = inputElements[index].value.trim();
+      let errors = {};
+
+      switch (index) {
+          case 0: // Name
+              errors = validateName(value, value); // Simulating first and last name
+              break;
+          case 1: // Email
+              errors = validateEmail(value);
+              break;
+          case 2: // Password
+              errors = validatePassword(value);
+              break;
+      }
+
+      if (errors.name || errors.email || errors.password) {
+          errorMessage.innerText = errors.name || errors.email || errors.password;
+          errorMessage.style.display = 'block';
+          return false;
+      } else {
+          errorMessage.style.display = 'none';
+          return true;
+      }
+  }
   
     cancelLinks.forEach((cancelLink, index) => {
       cancelLink.addEventListener('click', (e) => {
@@ -169,11 +211,70 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
 
+      // console.log(index)
+      // if (index === 0) {
+      //   const value = inputElements[0].value.trim().split(/\s+/);
+      //   const [firstName, lastName] = value;
+      //   const nameErrorMessage = document.getElementById('nameErrorMessage');
+        
+      //   // Check if first and last name are filled in
+      //   if (firstName === '' || lastName === '') {
+      //     nameErrorMessage.style.display = 'block';
+      //     nameErrorMessage.innerHTML = 'Please fill in first and last name.';
+      //     // console.log('Please fill in all fields.');
+      //     return;
+      //   }
+      
+      //   // Check if names contain only English letters
+      //   const namePattern = /^[A-Za-z]+$/;
+      //   if (!namePattern.test(firstName) || !namePattern.test(lastName)) {
+      //     nameErrorMessage.style.display = 'block';
+      //     nameErrorMessage.innerHTML = 'Names must contain only English letters.';
+      //     return;
+      //   }
+
+      //   updateProfile(auth.currentUser, {
+      //     displayName: inputElements[0].value
+      //   });
+      // }
       if (index === 0) {
-        updateProfile(auth.currentUser, {
-          displayName: inputElements[0].value
-        });
-      }
+        const value = inputElements[0].value.trim().split(/\s+/);
+        const [firstName, lastName] = value;
+        const nameErrorMessage = document.getElementById('nameErrorMessage');
+        nameErrorMessage.style.display = 'none';
+    
+        let isValid = true;
+    
+        // 验证输入
+        if (!firstName || !lastName) {
+            showError('Please fill in both first and last name.');
+            isValid = false;
+        }
+    
+        const namePattern = /^[A-Za-z]+$/;
+        if (isValid && (!namePattern.test(firstName) || !namePattern.test(lastName))) {
+            showError('Names must contain only English letters.');
+            isValid = false;
+        }
+    
+        // 通过所有检查后才更新
+        if (isValid) {
+            updateProfile(auth.currentUser, {
+                displayName: `${firstName} ${lastName}`
+            }).then(() => {
+                console.log('Profile updated successfully.');
+            }).catch(error => {
+                showError(`Failed to update profile: ${error.message}`);
+            });
+        }
+    
+        // 错误处理函数
+        function showError(message) {
+            nameErrorMessage.style.display = 'block';
+            nameErrorMessage.textContent = message;
+        }
+    }
+    
       if (index === 1) {
         console.log(inputElements[0].value)
         updateEmail(auth.currentUser, inputElements[0].value)
@@ -183,3 +284,17 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+// Navigation Links
+const navLinks = document.querySelectorAll('.nav-link');
+
+navLinks.forEach(link => {
+    link.addEventListener('click', (event) => {
+        event.preventDefault(); // Prevent default anchor behavior
+        const targetId = link.getAttribute('href'); // Get the target section ID
+        const targetSection = document.querySelector(targetId); // Find the target section
+
+        // Scroll to the target section smoothly
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+    });
+});

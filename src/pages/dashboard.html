@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RoseWell Healthcare - Dashboard</title>
-    <link rel="icon" href="../img/logo.png" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <style>
@@ -77,6 +76,7 @@
             <div class="info-group">
                 <span class="display-name" id="user-name">user name</span>
                 <a href="#" class="edit-link">Edit</a>
+                <p id="nameErrorMessage" class="errorlabel" style="display:none; color: red;"></p>
                 <input type="text" class="edit-name" style="display: none; max-width: 95%; border: 1px solid #ccc; margin-left: 20px;">
                 <button class="cancel-link" style="display: none;">Cancel</button>
                 <button class="save-link" style="display: none;">Save</button>
@@ -86,6 +86,7 @@
             <h3>Email</h3>
             <div class="info-group">
                 <span class="display-email" id="user-email">user@email.com</span>
+                <p id="emailErrorMessage" class="errorlabel" style="display:none; color: red;"></p>
                     <input type="email" class="edit-email" style="display: none; max-width: 95%; border: 1px solid #ccc; margin-left: 20px;">
                     <a href="#" class="edit-link">Edit</a>
                 <button class="cancel-link" style="display: none;">Cancel</button>
@@ -99,6 +100,7 @@
             <div class="info-group">
                 <p class="password-dots">
                     <span class="display-password" id="user-password">••••••••••</span>
+                    <p id="passwordErrorMessage" class="errorlabel" style="display:none; color: red;"></p>
                     <input type="password" class="edit-password" style="display: none; max-width: 95%; border: 1px solid #ccc; margin-left: 20px;">
                 </p>
                 <a href="#" class="edit-link">Edit</a>
@@ -180,7 +182,7 @@
                     Suite 123<br>
                     Corona Del Mar, CA 1234<br> -->
                     <a href="tel:8044208575">Phone: 804-420-8575</a><br>
-                        <a>Fax: 804-373-5119</a><br>
+                    <a>Fax: 804-373-5119</a><br>
                     <a href="mailto:contact@rosewellhc.com">contact@rosewellhc.com</a>
                 </address>
                 <!-- <div class="social-links">

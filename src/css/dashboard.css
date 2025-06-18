@@ -164,6 +164,7 @@ body {
     right: 0;
     color: #0066cc;
     text-decoration: none;
+    /* white-space: nowrap; */
 }
 
 .password-dots {
@@ -342,25 +343,6 @@ button {
   }
 
 
-/* Navigation Links */    
-.nav-links {
-    display: flex;
-    gap: 10px; /* Space between links */
-}
-
-.nav-link {
-    text-decoration: none;
-    color: white; /* Change to your preferred color */
-    padding: 5px 10px;
-    transition: background-color 0.3s;
-    border-radius: 20px;
-}
-
-.nav-link:hover {
-    background-color: rgba(173, 216, 230, 0.648); /* Change to your preferred hover color */
-}
-
-
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -370,7 +352,8 @@ button {
     }
 
     .edit-link {
-        position: static;
+        position: absolute;
+        right: 0;
         display: block;
         margin-top: 10px;
         text-align: right;
@@ -408,7 +391,7 @@ button {
     }
 
     .nav-links {
-        display: none;
+        display: none; /* Hide links on narrow screens */
     }
 
     .cancel-link {

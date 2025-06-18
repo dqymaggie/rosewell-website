@@ -15,54 +15,109 @@
     cursor: pointer;
     text-decoration: none;
 }
+body {
+  padding-top: 145px;
+}
 
-.hero {
-    height: 50vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    /* align-items: center; */
-    text-align: center;
-    /* padding: 20px; */
-    background-image: url('../img/image7.jpg');
+@media (max-width: 768px) {
+  body {
+      padding-top: 60px;
+  }
+}
+
+
+.hero-banner {
+    position: relative;
+    background-image: url('../img/priscilla-du-preez-K8XYGbw4Ahg-unsplash.jpg');
     background-size: cover;
-    background-position: center;
-}
-
-.hero-box{
-    background-color: azure;
-    height: 20vh;
-    padding: 1% 1%;
-    margin-left: 20px;
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-}
-
-.hero h1 {
-    font-size: 30px;
-    color: #003366;
-    margin: 15px 0;
-}
-
-.book-now {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #003366;
+    background-position: 90% center;
+    height: 40vh;
     color: white;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
+    display: flex;
+    align-items: center;
+    background-color: linea;
+  }
+  
+  .overlay {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 30%, rgba(0, 0, 0, 0.3) 60%, transparent 100%);
+    display: flex;
+    align-items: center;
+  }
+  
+  .banner-content {
+    max-width: 600px;
+    padding: 0 50px;
+  }
+  
+  .banner-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+  
+  .banner-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  .banner-buttons .btn {
+    display: inline-block;
+    padding: 12px 20px;
+    margin-right: 15px;
+    border-radius: 8px;
     text-decoration: none;
-    transition: background-color 0.3s;
-}
+    font-weight: 600;
+    transition: background 0.3s ease;
+  }
+  
+  .btn.primary {
+    background-color: #a78bfa;
+    color: white;
+  }
+  
+  .btn.secondary {
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+  }
 
-.book-now:hover {
-    background-color: #054f99;
-}
+  @media (min-width: 1200px) {
+    .hero-banner {
+      background-position: 0% 40%;
+      /* background-position: left; */
+      background-size: 120% auto;
+    }
 
+    .banner-content {
+        padding-left: 15%;
+        max-width: 50%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .banner-content h1 {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+      }
+
+    .banner-content p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .banner-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .banner-buttons .btn {
+        display: inline-block;
+        padding: 6px 10px;
+    }
+}
 
 
 /* Service Section */
@@ -92,6 +147,7 @@ p {
     font-size: 16px;
     line-height: 1.6;
     margin: 30px 0 10px 0;
+    max-width: 800px;
 }
 
 .service-icon {
@@ -108,7 +164,7 @@ p {
 }
 
 .service-list li {
-    font-size: 16px;
+    font-size: 1.1rem;
     color: #444;
     padding: 8px 0;
     display: flex;
@@ -123,7 +179,7 @@ p {
 
 a {
     text-decoration: underline;
-    color: #003366;
+    color: #007bff;
 }
 
 
