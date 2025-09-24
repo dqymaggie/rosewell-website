@@ -28,7 +28,7 @@ const firebaseApp = initializeApp({
 const auth = getAuth(firebaseApp);
 
 // ------------------------------------------------------------------------------------------
-connectAuthEmulator(auth, "http://localhost:9099");
+// connectAuthEmulator(auth, "http://localhost:9099");
 
 // // Attach the function to the window object to make it globally accessible
 // window.switchToSignIn = function() {

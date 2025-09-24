@@ -26,7 +26,7 @@ const firebaseApp = initializeApp({
   });
 const auth = getAuth(firebaseApp);
 
-connectAuthEmulator(auth, "http://localhost:9099");
+// connectAuthEmulator(auth, "http://localhost:9099");
 // Monitor auth state
 // const lblAuthState = document.querySelector('#lblAuthState')
 // const showLoginState = (user) => {
