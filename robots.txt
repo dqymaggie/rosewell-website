@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://rosewellhc.com/sitemap.xml
+Host: https://rosewellhc.com/
