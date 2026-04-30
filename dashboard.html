@@ -1,205 +1,153 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RoseWell Healthcare - Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<script defer src="main.bundle.js"></script><script defer src="dashboard.bundle.js"></script><script defer src="validation.bundle.js"></script></head>
-<style>
-    body {
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 0.5s ease-in-out;
-    }
-</style>
-<body>
-    <header>
-        <div class="header-wrapper">
-            <nav class="nav-header">
-                <a href="/" class="logo">RoseWell</a>
-                <div class="nav-icons">
-                    <div class="nav-links">
-                        <div class="dropdown">
-                            <a href="/" class="nav-link">Home</a>
-                            <div class="dropdown-content">
-                                <a href="#about-us">About Us</a>
-                                <a href="#faq">FAQ</a>
-                                <a href="#contact">Contact</a>
-                            </div>
-                        </div>
-                        <div class="dropdown">
-                            <a href="services.html" class="nav-link">Services</a>
-                            <div class="dropdown-content">
-                                <a href="/services.html#primaryCareDescription">Primary Care</a>
-                                <a href="/services.html#mentalHealthDescription">Mental Health</a>
-                            </div>
-                        </div>
-                    </div>
-                    <button class="icon-button" onclick="window.location.href='/login.html'" aria-label="Sign In" id="user-icon">
-                        <i class="fas fa-user"></i>
-                </div>
-            </nav>
-        </div> 
-    </header>
-    
-    <div class="dashboard-container">
-        <div class="profile-details">
-            <h1 id="user-welcome">Welcome, user!</h1>
-        </div>
-
-        <div class="button-grid">
-            <button id="btnSchedule" type="button" class="tile-button" onclick="window.location.href='https://practice.kareo.com/rosewell-healthcare'">
-              <i class="fa-regular fa-calendar-check"></i>
-              Schedule an Appointment
-            </button>
-            <button id="btnMessages" type="button" class="tile-button" onclick="location.href='#contact-form'">
-              <i class="fa-regular fa-envelope"></i>
-              Email Us
-            </button>
-            <button id="btnVisits" type="button" class="tile-button">
-              <i class="fa-regular fa-calendar"></i>
-              Visits
-            </button>
-            <button id="btnLogout" type="button" class="tile-button">
-              <!-- <i class="fa-regular fa-file-alt"></i> -->
-              <i class="fa-solid fa-arrow-right-from-bracket"></i>
-              Log Out
-            </button>
-          </div>
-    </div>
-
-    <!-- Profile Section -->
-    <div class="profile-section">
-        <div class="info-section">
-            <h3>Name</h3>
-            <div class="info-group">
-                <span class="display-name" id="user-name">user name</span>
-                <a href="#" class="edit-link">Edit</a>
-                <p id="nameErrorMessage" class="errorlabel" style="display:none; color: red;"></p>
-                <input type="text" class="edit-name" style="display: none; max-width: 95%; border: 1px solid #ccc; margin-left: 20px;">
-                <button class="cancel-link" style="display: none;">Cancel</button>
-                <button class="save-link" style="display: none;">Save</button>
-            </div>
-        </div>
-        <div class="info-section">
-            <h3>Email</h3>
-            <div class="info-group">
-                <span class="display-email" id="user-email">user@email.com</span>
-                <p id="emailErrorMessage" class="errorlabel" style="display:none; color: red;"></p>
-                    <input type="email" class="edit-email" style="display: none; max-width: 95%; border: 1px solid #ccc; margin-left: 20px;">
-                    <a href="#" class="edit-link">Edit</a>
-                <button class="cancel-link" style="display: none;">Cancel</button>
-                <button class="save-link" style="display: none;">Save</button>
-                <span class="verify-status" id="verify-status">Verify</span>
-            </div>
-        </div>
-
-        <div class="info-section">
-            <h3>Password</h3>
-            <div class="info-group">
-                <p class="password-dots">
-                    <span class="display-password" id="user-password">••••••••••</span>
-                    <p id="passwordErrorMessage" class="errorlabel" style="display:none; color: red;"></p>
-                    <input type="password" class="edit-password" style="display: none; max-width: 95%; border: 1px solid #ccc; margin-left: 20px;">
-                </p>
-                <a href="#" class="edit-link">Edit</a>
-                <button class="cancel-link" style="display: none;">Cancel</button>
-                <button class="save-link" style="display: none;">Save</button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Modal for editing -->
-    <div id="editModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h3>Edit <span id="fieldName"></span></h3>
-            <input type="text" id="editInput" />
-            <button id="saveButton">Save</button>
-        </div>
-    </div>
-
-    <!-- Dashboard Contact Form -->
-    <div class="contact" style="margin-top: 20px;" id="contact-form">
-        <!-- <section class="contact"> -->
-            <h2>Appointment & Support</h2>
-            <p class="contact-intro" style="font-size: 18px;">Leave a message and we will be in touch shortly!</p>
-            
-            <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
-                <!-- update access key -->
-                <input type="hidden" name="access_key" value="bb4c5346-980d-42f9-8080-c29fccba36e0"> 
-            
-                <div class="name-group">
-                    <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" name="firstName" id="contact-firstName">
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" name="lastName" id="contact-lastName">
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="contact-email">
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Message*</label>
-                    <textarea name="message" required></textarea>
-                </div>
-                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                <button type="submit" class="send-button">SEND</button>
-            </form>
-        <!-- </section> -->
-    </div>
-     
-
-    <script>
-        window.onload = function() {
-            document.body.style.visibility = 'visible';
-            document.body.style.opacity = '1';
-        };
-    </script>
-</body>
-<!-- Footer Component -->
-<div class="footer-wrapper">
-    <footer>
-        <div class="footer-content">
-            <div class="footer-left">
-                <div class="footer-logo">
-                    <a href="/">RoseWell</a>
-                </div>
-                <p class="footer-tagline">BUILT ON THE STRENGTH OF HEALTHCARE</p>
-            </div>
-
-            <div class="footer-contact">
-                <h3>Contact Us</h3>
-                <address>
-                    <!-- 1234 Healthcare Drive<br>
-                    Suite 123<br>
-                    Corona Del Mar, CA 1234<br> -->
-                    <a href="tel:8044208575">Phone: 804-420-8575</a><br>
-                    <a>Fax: 804-373-5119</a><br>
-                    <a href="mailto:contact@rosewellhc.com">contact@rosewellhc.com</a>
-                </address>
-                <!-- <div class="social-links">
-                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                </div> -->
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <p>&copy; 2025 RoseWell Healthcare, Inc</p>
-            <div class="footer-links">
-                <a href="/terms.html" style="text-decoration: underline;">Terms & Conditions</a>
-                <a href="/privacy.html" style="text-decoration: underline;">Privacy Policy</a>
-            </div>
-        </div>
-    </footer>
-</div> 
-</html> 
+<head><script defer src="main.bundle.js"></script><script defer src="validation.bundle.js"></script></head>Html Webpack Plugin:
+<pre>
+  Error: Child compilation failed:
+  Module not found: Error: Can't resolve '/Users/dongm/Downloads/05 coding/rosewell-website/src/pages/dashboard.html' in '/Users/dongm/Downloads/05 coding/rosewell-website'
+  ModuleNotFoundError: Module not found: Error: Can't resolve '/Users/dongm/Downloads/05 coding/rosewell-website/src/pages/dashboard.html' in '/Users/dongm/Downloads/05 coding/rosewell-website'      at /Users/dongm/Downloads/05 coding/rosewell-website/node_modules/webpack/lib/Compilation.js:2143:28
+      at /Users/dongm/Downloads/05 coding/rosewell-website/node_modules/webpack/lib/NormalModuleFactory.js:1076:13
+      at eval (eval at create (/Users/dongm/Downloads/05 coding/rosewell-website/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:10:1)
+      at /Users/dongm/Downloads/05 coding/rosewell-website/node_modules/webpack/lib/NormalModuleFactory.js:456:22
+      at eval (eval at create (/Users/dongm/Downloads/05 coding/rosewell-website/node_modules/tapable/lib/HookCodeFactory.js:31:10), <anonymous>:9:1)
+      at /Users/dongm/Downloads/05 coding/rosewell-website/node_modules/webpack/lib/NormalModuleFactory.js:642:22
+      at /Users/dongm/Downloads/05 coding/rosewell-website/node_modules/webpack/lib/NormalModuleFactory.js:197:10
+      at /Users/dongm/Downloads/05 coding/rosewell-website/node_modules/webpack/lib/NormalModuleFactory.js:917:25
+      at /Users/dongm/Downloads/05 coding/rosewell-website/node_modules/webpack/lib/NormalModuleFactory.js:1162:8
+      at /Users/dongm/Downloads/05 coding/rosewell-website/node_modules/webpack/lib/NormalModuleFactory.js:1292:5
+  
+  - Compilation.js:2143 
+    [rosewell-website]/[webpack]/lib/Compilation.js:2143:28
+  
+  - NormalModuleFactory.js:1076 
+    [rosewell-website]/[webpack]/lib/NormalModuleFactory.js:1076:13
+  
+  
+  - NormalModuleFactory.js:456 
+    [rosewell-website]/[webpack]/lib/NormalModuleFactory.js:456:22
+  
+  
+  - NormalModuleFactory.js:642 
+    [rosewell-website]/[webpack]/lib/NormalModuleFactory.js:642:22
+  
+  - NormalModuleFactory.js:197 
+    [rosewell-website]/[webpack]/lib/NormalModuleFactory.js:197:10
+  
+  - NormalModuleFactory.js:917 
+    [rosewell-website]/[webpack]/lib/NormalModuleFactory.js:917:25
+  
+  - NormalModuleFactory.js:1162 
+    [rosewell-website]/[webpack]/lib/NormalModuleFactory.js:1162:8
+  
+  - NormalModuleFactory.js:1292 
+    [rosewell-website]/[webpack]/lib/NormalModuleFactory.js:1292:5
+  
+  - child-compiler.js:211 
+    [rosewell-website]/[html-webpack-plugin]/lib/child-compiler.js:211:18
+  
+  - Compiler.js:672 finalCallback
+    [rosewell-website]/[webpack]/lib/Compiler.js:672:5
+  
+  - Compiler.js:708 
+    [rosewell-website]/[webpack]/lib/Compiler.js:708:11
+  
+  - Compiler.js:1417 
+    [rosewell-website]/[webpack]/lib/Compiler.js:1417:17
+  
+  
+  - Hook.js:21 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
+    [rosewell-website]/[tapable]/lib/Hook.js:21:14
+  
+  - Compiler.js:1413 
+    [rosewell-website]/[webpack]/lib/Compiler.js:1413:33
+  
+  - Compilation.js:3278 finalCallback
+    [rosewell-website]/[webpack]/lib/Compilation.js:3278:11
+  
+  - Compilation.js:3617 
+    [rosewell-website]/[webpack]/lib/Compilation.js:3617:11
+  
+  
+  - Hook.js:21 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
+    [rosewell-website]/[tapable]/lib/Hook.js:21:14
+  
+  - Compilation.js:3610 
+    [rosewell-website]/[webpack]/lib/Compilation.js:3610:38
+  
+  
+  - Compilation.js:641 fn
+    [rosewell-website]/[webpack]/lib/Compilation.js:641:9
+  
+  
+  - Hook.js:21 Hook.CALL_ASYNC_DELEGATE [as _callAsync]
+    [rosewell-website]/[tapable]/lib/Hook.js:21:14
+  
+  - Compilation.js:3574 cont
+    [rosewell-website]/[webpack]/lib/Compilation.js:3574:34
+  
+  - Compilation.js:3630 
+    [rosewell-website]/[webpack]/lib/Compilation.js:3630:10
+  
+  - async.js:3485 symbolIterator
+    [rosewell-website]/[neo-async]/async.js:3485:9
+  
+  - async.js:2297 timesSync
+    [rosewell-website]/[neo-async]/async.js:2297:7
+  
+  - async.js:3463 Object.eachLimit
+    [rosewell-website]/[neo-async]/async.js:3463:5
+  
+  - Compilation.js:5197 Compilation.createChunkAssets
+    [rosewell-website]/[webpack]/lib/Compilation.js:5197:12
+  
+  - Compilation.js:3625 
+    [rosewell-website]/[webpack]/lib/Compilation.js:3625:14
+  
+  - Compilation.js:3821 
+    [rosewell-website]/[webpack]/lib/Compilation.js:3821:6
+  
+  - async.js:2818 
+    [rosewell-website]/[neo-async]/async.js:2818:7
+  
+  - async.js:3522 done
+    [rosewell-website]/[neo-async]/async.js:3522:9
+  
+  - Compilation.js:3782 
+    [rosewell-website]/[webpack]/lib/Compilation.js:3782:8
+  
+  - Compilation.js:3899 
+    [rosewell-website]/[webpack]/lib/Compilation.js:3899:6
+  
+  - HookWebpackError.js:101 
+    [rosewell-website]/[webpack]/lib/HookWebpackError.js:101:2
+  
+  
+  - Cache.js:133 Cache.store
+    [rosewell-website]/[webpack]/lib/Cache.js:133:20
+  
+  - CacheFacade.js:153 ItemCacheFacade.store
+    [rosewell-website]/[webpack]/lib/CacheFacade.js:153:15
+  
+  - Compilation.js:3898 
+    [rosewell-website]/[webpack]/lib/Compilation.js:3898:11
+  
+  - Cache.js:115 
+    [rosewell-website]/[webpack]/lib/Cache.js:115:34
+  
+  - MemoryCachePlugin.js:44 Array.<anonymous>
+    [rosewell-website]/[webpack]/lib/cache/MemoryCachePlugin.js:44:13
+  
+  - Cache.js:115 
+    [rosewell-website]/[webpack]/lib/Cache.js:115:19
+  
+  
+  - Cache.js:99 Cache.get
+    [rosewell-website]/[webpack]/lib/Cache.js:99:18
+  
+  - CacheFacade.js:125 ItemCacheFacade.get
+    [rosewell-website]/[webpack]/lib/CacheFacade.js:125:15
+  
+  - Compilation.js:3864 Compilation._codeGenerationModule
+    [rosewell-website]/[webpack]/lib/Compilation.js:3864:9
+  
+  - Compilation.js:3768 
+    [rosewell-website]/[webpack]/lib/Compilation.js:3768:11
+  
+</pre>

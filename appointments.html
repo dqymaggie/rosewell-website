@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RoseWell Healthcare - Appointments</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<script defer src="appointments.bundle.js"></script><script defer src="header.bundle.js"></script></head>
+<style>
+    body {
+        visibility: hidden;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+    }
+</style>
+<body>
+    <header>
+        <div class="top-strip"></div>
+    
+        <div class="logo-contact">
+            <div class="logo"><a href="index.html"><img src="./img/logo.png""></a></div>
+            <div class="site-title">ROSEWELL HEALTHCARE</div>
+            <div class="contact-icons">
+                <a href="tel:8044208575"><i class="fas fa-phone"></i></a>
+                <a href="mailto:contact@rosewellhc.com"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+            <div class="menu-icon" id="menu-icon"><i class="fas fa-bars"></i></div>
+        </div>
+        
+        <nav class="nav-bar">
+            <a href="index.html">HOME</a>
+            <a href="services.html">SERVICES</a>
+            <a href="appointments.html">APPOINTMENTS</a>
+            <a href="about.html">ABOUT</a>
+            <a href="outreach.html">OUTREACH</a>
+        </nav>
+    
+        <div class="mobile-menu" id="mobile-menu">
+        <div class="close-btn" id="close-menu">&times;</div>
+        <nav class="mobile-nav">
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="appointments.html">Appointments</a>
+          <a href="about.html">About</a>
+          <a href="outreach.html">Outreach</a>
+        </nav>
+      </div>
+    </header>
+    <section class="hero-banner">
+        <div class="overlay">
+            <div class="banner-content">
+                <h1>Appointments</h1>
+                <p>Insurance and booking made clear. <br> Choose a plan, book online, and prepare with confidence.</p>
+                <div class="banner-buttons">
+                    <a href="https://growtherapy.com/book-appointment?id=31905&utm_source=provider-sourced&utm_medium=booking-link&utm_campaign=provider-dashboard" class="btn primary" target="_blank" rel="noopener noreferrer">Grow Therapy</a>
+                    <a href="https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=T3JlUUFUdmkwMklqMVIvbjMrQUhXUT09&lid=VVNTZTlpSSt2Q29DYjNxOHUxdEhmQT09" class="btn primary" target="_blank" rel="noopener noreferrer">OptiMantra</a>
+                    <a href="#booking" class="btn secondary">View Options</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-container insurance-section" id="insurance">
+        <h2>INSURANCE ACCEPTED</h2>
+        <p>We work with trusted insurance partners for covered health visits. <br>If your plan is accepted, you can book directly on the platforms listed below.</p>
+        <div class="info-grid">
+            <div class="info-card">Aetna</div>
+            <div class="info-card">Anthem BCBS</div>
+            <div class="info-card">Cigna</div>
+            <div class="info-card">Medicare</div>
+            <div class="info-card">Optum Behavioral</div>
+            <div class="info-card">Humana Military / TRICARE East</div>
+        </div>
+    </section>
+
+    <section class="section-container booking-section" id="booking">
+        <h2>WAYS TO BOOK APPOINTMENTS</h2>
+        <p>We offer services on the following platforms. If you have any questions, reach out via the <a href="index.html#contact">contact form</a> on our homepage, <a href="tel:8044208575">call or text us</a>, or <a href="mailto:contact@rosewellhc.com">email us</a>. We will be happy to assist you.</p>
+
+        <div class="booking-cards">
+            <article class="booking-card">
+                <div class="booking-logo">Grow Therapy</div>
+                <p>Book online through Grow Therapy when your insurance is accepted there. This option is ideal for convenient telehealth scheduling and rapid access to care.</p>
+                <a href="https://growtherapy.com/book-appointment?id=31905&utm_source=provider-sourced&utm_medium=booking-link&utm_campaign=provider-dashboard" class="booking-link" target="_blank" rel="noopener">Book on Grow Therapy</a>
+            </article>
+            <article class="booking-card">
+                <div class="booking-logo">OptiMantra</div>
+                <p>Use OptiMantra for out-of-pocket appointments or plans not covered through our primary insurance partners. It provides a simple way to book your visit directly.</p>
+                <a href="https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=T3JlUUFUdmkwMklqMVIvbjMrQUhXUT09&lid=VVNTZTlpSSt2Q29DYjNxOHUxdEhmQT09" class="booking-link" target="_blank" rel="noopener">Book on OptiMantra</a>
+            </article>
+        </div>
+    </section>
+
+    <section class="section-container visit-section" id="before-visit">
+        <h2>BEFORE YOUR VISIT</h2>
+        <div class="visit-steps">
+            <div class="visit-step">
+                <div class="visit-icon"><i class="fa-solid fa-clipboard-list"></i></div>
+                <div class="visit-text">Fill out your new patient intake form before your appointment.</div>
+            </div>
+            <div class="visit-step">
+                <div class="visit-icon"><i class="fas fa-clock"></i></div>
+                <div class="visit-text">Reschedule or cancel at least 24 hours before your appointment to avoid fees.</div>
+            </div>
+            <div class="visit-step">
+                <div class="visit-icon"><i class="fas fa-video"></i></div>
+                <div class="visit-text">Test your camera, microphone, and internet connection before your telehealth visit. </div>
+            </div>
+            <div class="visit-step">
+                <div class="visit-icon"><i class="fas fa-shield-alt"></i></div>
+                <div class="visit-text">Your visit is HIPAA-compliant and encrypted through our secure telehealth partner.</div>
+            </div>
+        </div>
+        <div class="book-now-container">
+            <p>Thank you for choosing RoseWell Healthcare. Ready to book or prepare for a visit? Schedule Appointment Now! </p>
+            <a href="https://growtherapy.com/book-appointment?id=31905&utm_source=provider-sourced&utm_medium=booking-link&utm_campaign=provider-dashboard" class="book-now-button">Grow Therapy  <i class="fas fa-arrow-right"></i></a>
+            <a href="https://www.optimantra.com/optimus/patient/patientaccess/servicesall?pid=T3JlUUFUdmkwMklqMVIvbjMrQUhXUT09&lid=VVNTZTlpSSt2Q29DYjNxOHUxdEhmQT09" class="book-now-button">OptiMantra  <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </section>
+
+    <script>
+        window.onload = function() {
+            document.body.style.visibility = 'visible';
+            document.body.style.opacity = '1';
+        };
+    </script>
+
+    <div class="footer-wrapper">
+        <footer class="footer">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-brand-top">
+                        <div id="logo"><img src="./img/logo.png" alt="RoseWell logo"></div>
+                        <div class="footer-logo"><a href="index.html">RoseWell</a></div>
+                    </div>
+                    <p class="footer-tagline">Built on the strength of healthcare. Compassionate care for your mind and body.</p>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-link-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="outreach.html">Outreach Gallery</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column">
+                    <h3>Our Services</h3>
+                    <ul class="footer-link-list">
+                        <li><a href="services.html#primaryCareDescription">Primary Care</a></li>
+                        <li><a href="services.html#mentalHealthDescription">Mental Health</a></li>
+                        <li><a href="appointments.html#insurance">Insurance</a></li>
+                    </ul>
+                </div>
+    
+                <div class="footer-column footer-contact">
+                    <h3>Contact Us</h3>
+                    <div class="contact-item">
+                        <span class="contact-icon"><i class="fas fa-phone"></i></span>
+                        <a href="tel:8044208575">804-420-8575</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon"><i class="fas fa-envelope"></i></span>
+                        <a href="mailto:contact@rosewellhc.com">contact@rosewellhc.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon"><i class="fas fa-map-marker-alt"></i></span>
+                        <span>VA and MD</span>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="footer-bottom">
+                <p>&copy; 2026 RoseWell Healthcare, Inc. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="terms.html">Terms &amp; Conditions</a>
+                </div>
+            </div>
+        </footer>
+    </div> </body>
+</html>
